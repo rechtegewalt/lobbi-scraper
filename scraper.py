@@ -35,7 +35,7 @@ def fetch(url):
     return soup
 
 
-def process_report(report, **kwargs):
+def process_report(report, add_sources=False, **kwargs):
     county = report.find("span", class_="title-zusatz-landkreis").extract().get_text()
     county = re.sub(r"[()]", "", county).strip()
 
@@ -89,15 +89,16 @@ def process_report(report, **kwargs):
 
     tab_incidents.upsert(data, ["rg_id"])
 
-    sources_data = [dict(rg_id=rg_id, name=x) for x in sources]
-    for x in sources_data:
-        tab_sources.upsert(x, ["rg_id"])
+    if add_sources:
+        sources_data = [dict(rg_id=rg_id, name=x) for x in sources]
+        for x in sources_data:
+            tab_sources.insert(x)
 
 
 all_posts = fetch(BASE_URL)
 
 for report in tqdm(all_posts.select("article.category-chronologie")):
-    process_report(report)
+    process_report(report, add_sources=True)
 
 
 for x in tqdm(all_posts.select("#exampleList_delikt option")):
