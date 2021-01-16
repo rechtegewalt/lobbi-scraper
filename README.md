@@ -10,12 +10,12 @@ Scraping right-wing incidents in Mecklenburg-Western Pomerania (*Mecklenburg-Vor
 For local development:
 
 -   Install [poetry](https://python-poetry.org/)
--   `pipenv install`
--   `pipenv run python scraper.py`
+-   `poetry install`
+-   `poetry run python scraper.py`
 
 For Morph:
 
--   `poetry export -f requirements.txt --output requirements.txt
+-   `poetry export -f requirements.txt --output requirements.txt`
 -   commit the `requirements.txt`
 -   modify `runtime.txt`
 
