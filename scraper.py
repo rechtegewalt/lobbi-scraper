@@ -14,7 +14,7 @@ tab_sources = db["sources"]
 tab_chronicles = db["chronicles"]
 
 
-tab_chronicles.insert(
+tab_chronicles.upsert(
     {
         "iso3166_1": "DE",
         "iso3166_2": "DE-MV",
@@ -22,7 +22,8 @@ tab_chronicles.insert(
         "chronicler_description": "Landesweite Opferberatung, Beistand und Information für Betroffene rechter Gewalt in Mecklenburg-Vorpommern",
         "chronicler_url": "https://lobbi-mv.de/",
         "chronicle_source": "https://lobbi-mv.de/monitoring/",
-    }
+    },
+    ["chronicler_name"],
 )
 
 
@@ -92,7 +93,7 @@ def process_report(report, add_sources=False, **kwargs):
     if add_sources:
         sources_data = [dict(rg_id=rg_id, name=x) for x in sources]
         for x in sources_data:
-            tab_sources.insert(x)
+            tab_sources.upsert(x, ["rg_id", "name"])
 
 
 all_posts = fetch(BASE_URL)
