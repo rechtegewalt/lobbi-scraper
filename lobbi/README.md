@@ -1,6 +1,6 @@
 # LOBBI Scraper
 
-Scraping right-wing incidents in Mecklenburg-Western Pomerania (*Mecklenburg-Vorpommern*), Germany as monitored by the NGO [LOBBI](https://lobbi-mv.de/).
+Scraping right-wing incidents in Mecklenburg-Western Pomerania (_Mecklenburg-Vorpommern_), Germany as monitored by the NGO [LOBBI](https://lobbi-mv.de/).
 
 -   Website: <https://lobbi-mv.de/monitoring/>
 -   Data: <https://morph.io/rechtegewalt/lobbi-scraper>
@@ -22,7 +22,3 @@ For Morph:
 ## Morph
 
 This is scraper runs on [morph.io](https://morph.io). To get started [see the documentation](https://morph.io/documentation).
-
-## License
-
-MIT
